@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import { Form, Input, Button } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { MailOutlined, LockOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 
 import { ContentCenter } from '@ui'
@@ -24,7 +24,7 @@ export const SignInPage = () => {
           <Form size="large">
             <Form.Item>
               <Input
-                prefix={<UserOutlined />}
+                prefix={<MailOutlined />}
                 placeholder="Введите ваш email"
               />
             </Form.Item>
