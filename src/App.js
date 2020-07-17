@@ -1,5 +1,15 @@
 import React from 'react'
 
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import { Pages } from '@pages'
+
+import 'antd/dist/antd.css'
+
 export const App = () => {
-  return <h1>Hello world!</h1>
+  return (
+    <Router>
+      <Pages />
+    </Router>
+  )
 }
