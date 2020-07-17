@@ -1,0 +1,1 @@
+export { ContentCenter } from './content-center'
