@@ -1,14 +1,37 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 
-import { Link } from 'react-router-dom'
-import { Form, Input, Button } from 'antd'
+import { Link, useHistory } from 'react-router-dom'
+import { Form, Input, Button, notification } from 'antd'
 import { MailOutlined, UserOutlined, LockOutlined } from '@ant-design/icons'
 
 import { ContentCenter } from '@ui'
 import { AuthCard } from '@features/auth'
+import { FirebaseContext } from '@lib/firebase'
 
 export const SignUpPage = () => {
   const [form] = Form.useForm()
+  const firebase = useContext(FirebaseContext)
+  const history = useHistory()
+
+  const handleSubmitForm = async ({ username, email, password }) => {
+    try {
+      await firebase.doCreateUserWithEmailAndPassword(email, password)
+
+      notification.success({
+        message: 'Регистрация прошла успешно',
+        description: `Поздравляем, пользователь ${username} был успешно зарегистрирован.`
+      })
+
+      form.resetFields()
+
+      history.push('/')
+    } catch (e) {
+      notification.error({
+        message: 'Ошибка регистрации',
+        description: e.message
+      })
+    }
+  }
 
   return (
     <div>
@@ -23,7 +46,7 @@ export const SignUpPage = () => {
         >
           <Form
             form={form}
-            onFinish={(values) => console.log(values)}
+            onFinish={handleSubmitForm}
             initialValues={{
               username: '',
               email: '',
