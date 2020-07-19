@@ -7,6 +7,7 @@ import { MailOutlined, UserOutlined, LockOutlined } from '@ant-design/icons'
 import { ContentCenter } from '@ui'
 import { AuthCard } from '@features/auth'
 import { FirebaseContext } from '@lib/firebase'
+import { WithAuthorization } from '@features/common'
 
 export const SignUpPage = () => {
   const [form] = Form.useForm()
@@ -34,7 +35,7 @@ export const SignUpPage = () => {
   }
 
   return (
-    <div>
+    <WithAuthorization type="not-authenticated">
       <ContentCenter>
         <AuthCard
           title="Регистрация"
@@ -144,6 +145,6 @@ export const SignUpPage = () => {
           </Form>
         </AuthCard>
       </ContentCenter>
-    </div>
+    </WithAuthorization>
   )
 }

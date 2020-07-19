@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 
 import { Pages } from '@pages'
 import { FirebaseContext } from '@lib/firebase'
-import { authActions } from '@features/auth'
+import { sessionActions } from '@lib/store/session'
 
 import 'antd/dist/antd.css'
 
@@ -14,11 +14,11 @@ export const App = () => {
   const firebase = useContext(FirebaseContext)
 
   useEffect(() => {
-    const listener = firebase.auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        dispatch(authActions.setUser(authUser))
+    const listener = firebase.auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(sessionActions.login(user))
       } else {
-        dispatch(authActions.setUser(null))
+        dispatch(sessionActions.logout())
       }
     })
 

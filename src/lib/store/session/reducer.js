@@ -1,7 +1,8 @@
 import * as types from './types'
 
 const initialState = {
-  user: null
+  user: {},
+  status: 'pending'
 }
 
 export const reducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload
+      }
+    case types.SET_STATUS:
+      return {
+        ...state,
+        status: action.payload
       }
     default:
       return state

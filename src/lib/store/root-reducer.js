@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import { authReducer } from '@features/auth'
+import { sessionReducer } from './session'
 
 export const rootReducer = combineReducers({
-  auth: authReducer
+  session: sessionReducer
 })
