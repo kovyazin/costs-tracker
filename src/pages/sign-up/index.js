@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 
 import { Link, useHistory } from 'react-router-dom'
 import { Form, Input, Button, notification } from 'antd'
@@ -14,7 +14,11 @@ export const SignUpPage = () => {
   const firebase = useContext(FirebaseContext)
   const history = useHistory()
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleSubmitForm = async ({ username, email, password }) => {
+    setIsLoading(true)
+
     try {
       await firebase.doCreateUserWithEmailAndPassword(email, password)
 
@@ -25,8 +29,12 @@ export const SignUpPage = () => {
 
       form.resetFields()
 
+      setIsLoading(false)
+
       history.push('/')
     } catch (e) {
+      setIsLoading(false)
+
       notification.error({
         message: 'Ошибка регистрации',
         description: e.message
@@ -138,7 +146,12 @@ export const SignUpPage = () => {
               />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit" block>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={isLoading}
+                block
+              >
                 Зарегистрироваться
               </Button>
             </Form.Item>

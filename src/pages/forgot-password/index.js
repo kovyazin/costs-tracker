@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { Form, Input, Button, notification } from 'antd'
 import { MailOutlined } from '@ant-design/icons'
@@ -12,7 +12,11 @@ export const ForgotPasswordPage = () => {
   const [form] = Form.useForm()
   const firebase = useContext(FirebaseContext)
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleSubmitForm = async ({ email }) => {
+    setIsLoading(true)
+
     try {
       await firebase.doPasswordReset(email)
 
@@ -28,6 +32,8 @@ export const ForgotPasswordPage = () => {
         message: 'Ошибка восстановления пароля',
         description: e.message
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -63,7 +69,12 @@ export const ForgotPasswordPage = () => {
               />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit" block>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={isLoading}
+                block
+              >
                 Сбросить пароль
               </Button>
             </Form.Item>

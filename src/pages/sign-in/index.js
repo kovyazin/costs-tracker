@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 
 import { Form, Input, Button, notification } from 'antd'
 import { MailOutlined, LockOutlined } from '@ant-design/icons'
@@ -16,14 +16,22 @@ export const SignInPage = () => {
   const firebase = useContext(FirebaseContext)
   const history = useHistory()
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleSubmitForm = async ({ email, password }) => {
+    setIsLoading(true)
+
     try {
       await firebase.doSignInWithEmailAndPassword(email, password)
 
       form.resetFields()
 
+      setIsLoading(false)
+
       history.push('/')
     } catch (e) {
+      setIsLoading(false)
+
       notification.error({
         message: 'Ошибка авторизации',
         description: e.message
@@ -85,7 +93,12 @@ export const SignInPage = () => {
                 />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" block>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={isLoading}
+                  block
+                >
                   Войти
                 </Button>
                 <div className="sign-in-page__forgot-password-link-wrapper">
