@@ -1,4 +1,4 @@
-.header {
+.wrapper {
   display: flex;
   align-items: center;
   height: 60px;
@@ -6,24 +6,21 @@
   background-color: #fff;
 }
 
-.header__logo {
-  margin-right: auto;
-}
-
-.header__navigation {
-  margin-right: 20px;
-}
-
 .logo {
+  margin-right: auto;
   color: rgba(0, 0, 0, .85);
   font-size: 24px;
   font-weight: 500;
 }
 
-.navigation__link {
+.navigation {
+  margin-right: 20px;
+}
+
+.navigationLink {
   color: rgba(0, 0, 0, .85);
 
-  & + .navigation__link {
+  & + .navigationLink {
     margin-left: 20px;
   }
 }

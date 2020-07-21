@@ -5,16 +5,16 @@ import classnames from 'classnames'
 import { Tag, Button } from 'antd'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 
-import './styles.scss'
+import classes from './styles.module.scss'
 
 export const CostsItem = ({ title, categories, sum, date, className }) => {
   return (
-    <div className={classnames('costs-item', className)}>
-      <div className="costs-item__body">
-        <div className="costs-item__info">
-          <span className="costs-item__title">{title}</span>
+    <div className={classnames(classes.wrapper, className)}>
+      <div className={classes.body}>
+        <div className={classes.info}>
+          <span className={classes.title}>{title}</span>
           {categories && (
-            <div className="costs-item__categories">
+            <div className={classes.categories}>
               {categories.map((category) => (
                 <Tag key={category} color="green">
                   {category}
@@ -23,22 +23,22 @@ export const CostsItem = ({ title, categories, sum, date, className }) => {
             </div>
           )}
         </div>
-        <div className="costs-item__actions">
+        <div className={classes.actions}>
           <Button
-            className="costs-item__actions-btn"
+            className={classes.button}
             type="primary"
             icon={<EditOutlined />}
           />
           <Button
-            className="costs-item__actions-btn"
+            className={classes.button}
             type="danger"
             icon={<DeleteOutlined />}
           />
         </div>
       </div>
-      <div className="costs-item__footer">
-        <span className="costs-item__date">{date}</span>
-        <span className="costs-item__sum">Общая сумма: {sum} &#8381;</span>
+      <div className={classes.footer}>
+        <span className={classes.date}>{date}</span>
+        <span className={classes.sum}>Общая сумма: {sum} &#8381;</span>
       </div>
     </div>
   )

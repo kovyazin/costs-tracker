@@ -5,19 +5,23 @@ import { Button } from 'antd'
 
 import { FirebaseContext } from '@lib/firebase'
 
-import './styles.scss'
+import classes from './styles.module.scss'
 
 export const Header = () => {
   const firebase = useContext(FirebaseContext)
 
   return (
-    <div className="header">
-      <Link to="/" className="logo header__logo">
+    <div className={classes.wrapper}>
+      <Link to="/" className={classes.logo}>
         Costs Tracker
       </Link>
-      <nav className="navigation header__navigation">
-        <NavLink to="/" className="navigation__link">Главная</NavLink>
-        <NavLink to="/settings" className="navigation__link">Настройки</NavLink>
+      <nav className={classes.navigation}>
+        <NavLink to="/" className={classes.navigationLink}>
+          Главная
+        </NavLink>
+        <NavLink to="/settings" className={classes.navigationLink}>
+          Настройки
+        </NavLink>
       </nav>
       <Button type="primary" onClick={firebase.doSignOut}>
         Выйти

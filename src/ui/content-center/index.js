@@ -3,14 +3,14 @@ import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 
-import './styles.scss'
+import classes from './styles.module.scss'
 
 export const ContentCenter = ({ children, className, fullHeight = true }) => {
   return (
     <div
-      className={classnames('content-center', {
+      className={classnames(classes.wrapper, {
         className,
-        'full-height': fullHeight
+        [classes.fullHeight]: fullHeight
       })}
     >
       {children}

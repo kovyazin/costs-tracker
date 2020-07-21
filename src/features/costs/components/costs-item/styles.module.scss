@@ -1,15 +1,15 @@
-.costs-item {
+.wrapper {
   box-shadow: 3px 3px 6px #d9d9d9;
 }
 
-.costs-item__body {
+.body {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px;
 }
 
-.costs-item__footer {
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -17,29 +17,29 @@
   border-top: 1px dashed #d9d9d9;
 }
 
-.costs-item__title {
+.title {
   display: inline-block;
   margin-bottom: 5px;
   font-size: 18px;
   font-weight: 500;
 }
 
-.costs-item__categories {
+.categories {
   margin-bottom: 5px;
 }
 
-.costs-item__actions-btn {
-  & + .costs-item__actions-btn {
+.button {
+  & + .button {
     margin-left: 5px;
   }
 }
 
-.costs-item__sum {
+.sum {
   font-size: 16px;
   font-weight: 500;
 }
 
-.costs-item__date {
+.date {
   font-size: 12px;
   color: #777;
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import './styles.scss'
+import classes from './styles.module.scss'
 
 export const Footer = () => {
   return (
-    <div className="footer">
+    <div className={classes.footer}>
       Make by{' '}
       <a
         href="https://github.com/kovyazin"

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import { CostsItem } from '../costs-item'
 
-import './styles.scss'
+import classes from './styles.module.scss'
 
 const costs = [
   {
@@ -36,7 +36,7 @@ const costs = [
 
 export const CostsList = () => {
   return (
-    <div className="costs-list">
+    <Fragment>
       {costs.map(({ title, id, categories, sum, date }) => (
         <CostsItem
           key={id}
@@ -44,9 +44,9 @@ export const CostsList = () => {
           sum={sum}
           categories={categories}
           date={date}
-          className="costs-list__item"
+          className={classes.costsItem}
         />
       ))}
-    </div>
+    </Fragment>
   )
 }

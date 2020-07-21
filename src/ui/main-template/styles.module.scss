@@ -1,4 +1,4 @@
-.main-template {
+.wrapper {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 315px auto;
@@ -11,20 +11,20 @@
   background-color: #eee;
 }
 
-.main-template__header {
+.header {
   grid-area: header;
 }
 
-.main-template__sidebar {
+.sidebar {
   grid-area: sidebar;
   padding-left: 15px;
 }
 
-.main-template__content {
+.content {
   grid-area: content;
   padding-right: 15px;
 }
 
-.main-template__footer {
+.footer {
   grid-area: footer;
 }

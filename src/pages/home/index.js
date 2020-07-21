@@ -8,7 +8,7 @@ import { MainTemplate } from '@ui'
 import { Header, WithAuthorization, Footer } from '@features/common'
 import { CostsList, FiltersPanel } from '@features/costs'
 
-import './styles.scss'
+import classes from './styles.module.scss'
 
 const { Option } = Select
 
@@ -19,10 +19,9 @@ export const HomePage = () => {
         header={<Header />}
         footer={<Footer />}
         sidebar={<FiltersPanel />}
-        className="home-page"
       >
         <Card bordered={false}>
-          <CostsHeader className="home-page__costs-header" />
+          <CostsHeader />
           <CostsList />
         </Card>
       </MainTemplate>
@@ -30,9 +29,9 @@ export const HomePage = () => {
   )
 }
 
-const CostsHeader = ({ className }) => {
+const CostsHeader = () => {
   return (
-    <Row className={className} justify="space-between">
+    <Row className={classes.costsHeader} justify="space-between">
       <Select defaultValue="date-increase">
         <Option value="date-increase">По дате (по возрастанию)</Option>
         <Option value="date-decrease">По дате (по убыванию)</Option>

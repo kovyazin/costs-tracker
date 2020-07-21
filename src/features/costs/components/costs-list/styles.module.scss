@@ -1,0 +1,5 @@
+.costsItem {
+  & + .costsItem {
+    margin-top: 20px;
+  }
+}
