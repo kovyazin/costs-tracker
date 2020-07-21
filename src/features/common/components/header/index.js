@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 
-import { Menu, Button } from 'antd'
+import { Link, NavLink } from 'react-router-dom'
+import { Button } from 'antd'
 
 import { FirebaseContext } from '@lib/firebase'
 
@@ -11,13 +12,13 @@ export const Header = () => {
 
   return (
     <div className="header">
-      <div className="logo header__logo">
+      <Link to="/" className="logo header__logo">
         Costs Tracker
-      </div>
-      <Menu theme="dark" mode="horizontal">
-        <Menu.Item>Главная</Menu.Item>
-        <Menu.Item>Настройки</Menu.Item>
-      </Menu>
+      </Link>
+      <nav className="navigation header__navigation">
+        <NavLink to="/" className="navigation__link">Главная</NavLink>
+        <NavLink to="/settings" className="navigation__link">Настройки</NavLink>
+      </nav>
       <Button type="primary" onClick={firebase.doSignOut}>
         Выйти
       </Button>

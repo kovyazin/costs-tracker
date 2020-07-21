@@ -1,0 +1,5 @@
+.costs-list__item {
+  & + .costs-list__item {
+    margin-top: 20px;
+  }
+}

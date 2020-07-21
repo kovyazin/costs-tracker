@@ -1,12 +1,29 @@
 .header {
   display: flex;
   align-items: center;
+  height: 60px;
+  padding: 0 15px;
+  background-color: #fff;
 }
 
 .header__logo {
   margin-right: auto;
 }
 
+.header__navigation {
+  margin-right: 20px;
+}
+
 .logo {
-  color: #fff;
+  color: rgba(0, 0, 0, .85);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.navigation__link {
+  color: rgba(0, 0, 0, .85);
+
+  & + .navigation__link {
+    margin-left: 20px;
+  }
 }

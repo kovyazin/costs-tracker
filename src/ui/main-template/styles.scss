@@ -1,3 +1,30 @@
 .main-template {
-  min-height: 100vh !important;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 315px auto;
+  grid-template-rows: min-content auto min-content;
+  gap: 30px;
+  grid-template-areas:
+    'header header'
+    'sidebar content'
+    'footer footer';
+  background-color: #eee;
+}
+
+.main-template__header {
+  grid-area: header;
+}
+
+.main-template__sidebar {
+  grid-area: sidebar;
+  padding-left: 15px;
+}
+
+.main-template__content {
+  grid-area: content;
+  padding-right: 15px;
+}
+
+.main-template__footer {
+  grid-area: footer;
 }
