@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import PropTypes from 'prop-types'
 import { Card, Row, Select, Button } from 'antd'
@@ -6,7 +6,7 @@ import { PlusOutlined } from '@ant-design/icons'
 
 import { MainTemplate } from '@ui'
 import { Header, WithAuthorization, Footer } from '@features/common'
-import { CostsList, FiltersPanel } from '@features/costs'
+import { CostsList, FiltersPanel, EditCostsModal } from '@features/costs'
 
 import classes from './styles.module.scss'
 
@@ -30,6 +30,8 @@ export const HomePage = () => {
 }
 
 const CostsHeader = () => {
+  const [modalVisible, setModalVisible] = useState(false)
+
   return (
     <Row className={classes.costsHeader} justify="space-between">
       <Select defaultValue="date-increase">
@@ -38,13 +40,18 @@ const CostsHeader = () => {
         <Option value="sum-increase">По сумме (по возрастанию)</Option>
         <Option value="sum-decrease">По сумме (по убыванию)</Option>
       </Select>
-      <Button type="primary" icon={<PlusOutlined />}>
+      <Button
+        type="primary"
+        icon={<PlusOutlined />}
+        onClick={() => setModalVisible(true)}
+      >
         Добавить новые расходы
       </Button>
+      <EditCostsModal
+        visible={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        type="create"
+      />
     </Row>
   )
-}
-
-CostsHeader.propTypes = {
-  className: PropTypes.string
 }
