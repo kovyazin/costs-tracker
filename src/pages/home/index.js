@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import PropTypes from 'prop-types'
 import { Card, Row, Select, Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 

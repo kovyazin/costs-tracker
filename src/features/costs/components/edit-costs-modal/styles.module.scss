@@ -2,3 +2,26 @@
   max-width: 600px !important;
   width: 100% !important;
 }
+
+.productRow {
+  display: flex;
+  align-items: baseline;
+}
+
+.productName {
+  flex: auto;
+  margin-right: 10px;
+}
+
+.productPrice {
+  flex: auto;
+  margin-right: 10px;
+}
+
+.inputNumber {
+  width: 100% !important;
+}
+
+.productDeleteBtn {
+  flex: none;
+}
